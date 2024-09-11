@@ -1,0 +1,12 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530 80" width="530" height="80">
+	<title>New Project</title>
+	<style>
+		tspan { white-space:pre } 
+		.t0 { font-size: 80px;fill: #f8f9fa;font-weight: 400;font-family: "Alice-Regular", "Alice" } 
+		.t1 { font-size: 80px;fill: #696cff;font-weight: 400;font-family: "Alice-Regular", "Alice" } 
+	</style>
+	<text id="Akademyati" style="transform: matrix(1,0,0,1,50,60)" >
+		<tspan x="0" y="0" class="t0">Akadem</tspan><tspan  y="0" class="t1">y</tspan><tspan  y="0" class="t1">a</tspan><tspan  y="0" class="t1">t</tspan><tspan  y="0" class="t1">i</tspan><tspan  y="0" class="t1">
+</tspan>
+	</text>
+</svg>

@@ -1,0 +1,793 @@
+.inbox-container {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(105, 108, 255, 0.5);
+}
+.inbox-container a {
+    text-decoration: none;
+}
+.inbox-container .contacts-sidebar,
+.inbox-container .inbox-content {
+    padding: 0;
+    height: 100%;
+}
+.contacts-sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 65%;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+.inbox-content {
+    position: relative;
+    margin-right: 65%;
+    transition: margin-right 0.3s ease;
+    border-right: 1px solid #ddd;
+}
+.inbox-content .add-contact-box {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #696cff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu {
+    min-height: 300px;
+    max-height: 500px;
+    min-width: 250px;
+    max-width: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
+    z-index: 13;
+    background-color: #fff;
+    margin-bottom: 5px !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.inbox-content .add-contact-box .add-new-user-menu::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 5px;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu .search-new-user-input {
+    height: 40px;
+    width: calc(100% - 20px);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 10px;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu .add-new-user-item {
+    border-bottom: 1px solid #ddd;
+    cursor: auto;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu .add-new-user-item .add-new-user-item-icon {
+    color: #696cff;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu .add-new-user-item .add-new-user-item-bg {
+    background-color: #696cff;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu .add-new-user-item .dropdown-item {
+    padding: 10px 10px;
+}
+
+.inbox-content .add-contact-box .add-new-user-menu .add-new-user-item-1 {
+    border-top: 1px solid #ddd;
+}
+
+.inbox-content .add-contact-box .add-contact-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: #fff;
+}
+@media (min-width: 992px) {
+    .inbox-container .contacts-sidebar .message-back-btn {
+        display: none;
+    }
+
+    .inbox-container .contacts-sidebar .inbox-content-header {
+        padding: 10px 20px 10px 10px;
+    }
+}
+@media (max-width: 992px) {
+    .contacts-sidebar {
+        width: 100%;
+        transform: translateX(100%);
+    }
+    .contacts-sidebar.show-sidebar {
+        transform: translateX(0);
+
+    }
+    .inbox-content {
+        margin-right: 0;
+    }
+
+    .inbox-container .contacts-sidebar .message-back-btn {
+        display: block;
+    }
+
+    .inbox-container .contacts-sidebar .inbox-content-header {
+        padding: 10px 20px 10px 40px;
+    }
+}
+
+.content-data-changer-empty {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    height: 100%;
+}
+
+.content-data-changer-empty.active {
+    display: flex;
+}
+
+.content-data-changer {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: relative;
+}
+
+.content-data-changer.active {
+    display: block;
+}
+.contacts-list-header {
+    height: 60px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.contacts-list-header .contacts-list-options {
+    height: 100%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.contacts-list-header .contacts-list-options-menu {
+    z-index: 14;
+    margin-top: 10px !important;
+    margin-left: 0 !important;
+    width: calc(100% - 50px);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(105, 108, 255, 0.5);
+
+    /*margin: -10px 0 0 10px !important;*/
+}
+
+.contacts-list-header .contacts-list-options-menu .dropdown-item {
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.contacts-list-header .contacts-list-options-menu li,
+.contacts-list-header .contacts-list-options-menu li a {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.contacts-list-header .contacts-search-box {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    padding: 12px 0;
+    position: relative;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.contacts-list-header .contacts-search-box .contacts-search-input {
+    display: flex;
+    flex-grow: 1;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    padding: 0 30px 0 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contacts-list-header .contacts-search-box .contacts-search-input:focus {
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+.contacts-list-header .contacts-search-box i {
+    position: absolute;
+    right: 10px;
+    top: 22px;
+    color: #646e78;
+}
+
+.inbox-content .contacts-list {
+    height: calc(100% - 60px);
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    list-style-type: none;
+    overflow-y: auto;
+}
+
+.inbox-content .contacts-list::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 5px;
+}
+
+.inbox-content .contacts-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.inbox-content .contacts-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.inbox-content .contacts-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.inbox-content .contacts-list .contact-item {
+    width: 100%;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.inbox-content .contacts-list .contact-item a,
+.inbox-content .contacts-list .contact-item form {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.inbox-content .contacts-list .contact-item .contact-submit-btn,
+.inbox-content .contacts-list .contact-item .contact-data-btn {
+    width: 100%;
+    height: 100%;
+    border: none;
+    box-sizing: border-box;
+    padding: 10px;
+    background: transparent;
+    text-align: left;
+    color: #000;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.inbox-content .contacts-list .contact-item .contact-submit-btn.selected-item,
+.inbox-content .contacts-list .contact-item .contact-data-btn.selected-item {
+    background-color: #696cff;
+    color: #fff;
+}
+
+.contacts-list .contact-item .contact-submit-btn .contact-prof-chars,
+.contacts-list .contact-item .contact-data-btn .contact-prof-chars {
+    height: 38px;
+    width: 38px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.contacts-list .contact-item .contact-submit-btn .contact-prof-img,
+.contacts-list .contact-item .contact-data-btn .contact-prof-img {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    margin: 0 10px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.contacts-list .contact-item .contact-submit-btn .contact-item-details,
+.contacts-list .contact-item .contact-data-btn .contact-item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    min-width: 0;
+    padding-right: 10px;
+}
+
+.contacts-list .contact-item .contact-submit-btn .contact-item-name,
+.contacts-list .contact-item .contact-data-btn .contact-item-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contacts-list .contact-item .contact-submit-btn .contact-item-subject,
+.contacts-list .contact-item .contact-data-btn .contact-item-subject {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contacts-list .contact-item .contact-submit-btn .contact-item-time,
+.contacts-list .contact-item .contact-data-btn .contact-item-time {
+    white-space: nowrap;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.contacts-list .contact-item .contact-submit-btn .contact-item-time .contact-new-messages-count,
+.contacts-list .contact-item .contact-data-btn .contact-item-time .contact-new-messages-count {
+    font-size: 0.8rem;
+    padding: 3px 7px;
+    margin-left: 2px;
+    border-radius: 50px;
+    background-color: #696cff;
+    color: white;
+    text-align: center;
+    font-style: normal;
+}
+
+.inbox-container .contacts-sidebar .content-container {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f9fa;
+    position: relative;
+}
+
+.inbox-container .contacts-sidebar .message-back-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 40px;
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: transparent;
+    z-index: 12;
+    border-radius: 0;
+}
+
+.inbox-container .contacts-sidebar .messages-body {
+    width: 100%;
+    height: calc(100% - 60px);
+    padding-bottom: 70px;
+    background-color: #f2f3f3;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.inbox-container .contacts-sidebar .messages-body::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 5px;
+}
+
+.inbox-container .contacts-sidebar .messages-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.inbox-container .contacts-sidebar .messages-body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.inbox-container .contacts-sidebar .messages-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-send-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background-color: #f2f3f3;
+    padding: 0 20px 15px;
+    margin-right: 5px;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box textarea {
+    width: 100%;
+    height: 100%;
+    padding: 5px 50px 5px 10px;
+    resize: none;
+    line-height: 1.5;
+    font-size: 1rem;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    position: relative;
+    border-radius: 5px;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box textarea::placeholder {
+    color: #bbb;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box textarea:focus {
+    outline: none;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box .message-input-send {
+    position: absolute;
+    bottom: 25px;
+    right: 30px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #696cff;
+    border: none;
+    background-color: transparent;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box .message-input-send i {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box textarea::selection {
+    background: #7b7efd;
+    color: #fff;
+    opacity: 1;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box textarea::-webkit-scrollbar {
+    width: 2px;
+    border-radius: 5px;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box textarea::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box textarea::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-input-box textarea::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came,
+.inbox-container .contacts-sidebar .messages-body .message-content-sent {
+    margin: 10px 20px;
+    padding: 10px;
+    width: calc(100% - 40px);
+    height: auto;
+    display: flex;
+    align-items: end;
+}
+.inbox-container .contacts-sidebar .messages-body .message-content-came {
+    justify-content: left;
+}
+.inbox-container .contacts-sidebar .messages-body .message-content-sent {
+    justify-content: right;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .contact-came-img,
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .contact-sent-img {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin: 0 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    object-fit: contain;
+    flex-shrink: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .contact-came-chars,
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .contact-sent-chars {
+    height: 25px;
+    width: 25px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin: 0 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #000;
+    font-weight: bold;
+    font-size: 0.7rem;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .message-came-details,
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .message-sent-details {
+    width: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .message-came-details {
+    max-width: calc(100% - 45px);
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .message-sent-details {
+    max-width: calc(100% - 80px);
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .message-came-remove,
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .message-sent-remove {
+    width: 25px;
+    height: 25px;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .message-came-remove button,
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .message-sent-remove button {
+    border: none;
+    background-color: transparent;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .message-came-remove {
+    margin-left: 10px;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .message-sent-remove {
+    margin-right: 10px;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .message-came-details {
+    background-color: #fff;
+    color: #000;
+    border-bottom-right-radius: 10px !important;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .message-sent-details {
+    background-color: #9597f1;
+    color: #fff;
+    border-bottom-left-radius: 10px !important;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .message-came-details .message-came-text,
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .message-sent-details .message-sent-text {
+    padding: 5px 10px;
+    text-wrap: wrap;
+    word-break: break-word;
+}
+
+.inbox-container .contacts-sidebar .messages-body .message-content-came .message-came-details .message-came-time,
+.inbox-container .contacts-sidebar .messages-body .message-content-sent .message-sent-details .message-sent-time {
+    display: flex;
+    justify-content: end;
+    height: 20px;
+    font-size: 0.8rem;
+    padding: 0 10px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.inbox-container .contacts-sidebar .inbox-content-header {
+    /*position: relative;*/
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.inbox-container .contacts-sidebar .inbox-content-header .message-options-action {
+    padding: 5px;
+    text-decoration: none;
+    color: #646e78;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: none;
+}
+
+.inbox-container .contacts-sidebar .inbox-content-header .contact-prof-img {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    margin: 0 10px;
+    object-fit: contain;
+    flex-shrink: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.inbox-container .contacts-sidebar .inbox-content-header .contact-prof-chars {
+    height: 38px;
+    width: 38px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.inbox-container .contacts-sidebar .inbox-content-header .contact-item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 10px;
+    flex-grow: 1;
+    min-width: 0;
+
+}
+.inbox-container .contacts-sidebar .inbox-content-header .contact-item-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.inbox-container .contacts-sidebar .inbox-content-header .contact-item-subject {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.inbox-container .contacts-sidebar .inbox-content-header .contact-item-time {
+    white-space: nowrap;
+    margin-left: auto;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.inbox-container .contacts-sidebar .inbox-content-second-header {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    user-select: none;
+    -webkit-user-select: none;
+    padding: 0 20px;
+}
+
+.inbox-container .contacts-sidebar .inbox-content-second-header .message-delete-action,
+.inbox-container .contacts-sidebar .inbox-content-second-header .message-star-action,
+.inbox-container .contacts-sidebar .inbox-content-second-header .message-options-action {
+    padding: 5px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #646e78;
+    font-size: 1.2rem;
+}
+
+.inbox-container .contacts-sidebar .inbox-content-second-header .message-delete-action i,
+.inbox-container .contacts-sidebar .inbox-content-second-header .message-star-action i,
+.inbox-container .contacts-sidebar .inbox-content-second-header .message-options-action i {
+
+}
+
+.archived-contacts-list {
+    list-style-type: none;
+    width: 80%;
+    margin: 0 10%;
+    padding: 0;
+}
+
+.archived-contacts-list li {
+    padding: 10px 20px;
+    margin: 0;
+    color: #000;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-grow: 1;
+    justify-content: start !important;
+    align-items: center !important;
+}
+
+.archived-contacts-list li button {
+    border: none;
+    color: #fff;
+    background-color: #696cff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.archived-contacts-list li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
