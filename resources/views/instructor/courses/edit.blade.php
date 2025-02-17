@@ -75,6 +75,7 @@
                         </a>
                     </li>
                 </ul>
+                {{-- <a type="submit" class="btn" id="submitEitAndCheck">Submit For Review</a> --}}
             </div>
             <div class="step-content-container-style1">
                 <!-- Main content goes here -->
