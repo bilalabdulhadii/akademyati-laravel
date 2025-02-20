@@ -23,7 +23,7 @@
                 <div class="row h-100 d-flex justify-content-start">
                     <div class="col-lg-6">
                         <div class="header-text mt-5 pt-5">
-                            <h6>Welcome To AKADEMYATI</h6>
+                            <h6>Welcome To AKADEMYATI - ONLY A TEST</h6>
                             <h4><em>Empowering</em> Your Future <br> with Knowledge</h4>
                             <div class="main-button">
                                 <a href="{{ route('courses.index') }}" class="main-button-swap">Browse Now <span>Browse → </span></a>
