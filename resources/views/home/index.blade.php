@@ -106,7 +106,7 @@
                                     <div class="card">
                                         <div class="image-container">
                                             {{-- <img src="{{ Storage::url($course->thumbnail) }}" class="card-img-top" alt="Course Image"> --}}
-                                            <img src="{{ asset('storage/'.$course->thumbnail) }}" class="card-img-top" alt="Course Image">
+                                            <img src="{{ asset('storage/app/public'.$course->thumbnail) }}" class="card-img-top" alt="Course Image">
 
                                             {{--@if($course->thumbnail)
                                                 <img src="{{ Storage::url($course->thumbnail) }}" class="card-img-top" alt="Course Image">
