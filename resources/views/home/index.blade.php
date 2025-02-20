@@ -105,11 +105,14 @@
                                 <div class="single-cat">
                                     <div class="card">
                                         <div class="image-container">
-                                            @if($course->thumbnail)
+                                            {{-- <img src="{{ Storage::url($course->thumbnail) }}" class="card-img-top" alt="Course Image"> --}}
+                                            <img src="{{ asset('storage/'.$course->thumbnail) }}" class="card-img-top" alt="Course Image">
+
+                                            {{--@if($course->thumbnail)
                                                 <img src="{{ Storage::url($course->thumbnail) }}" class="card-img-top" alt="Course Image">
                                             @else
                                                 <img src="{{ asset('assets/home/images/course_1.png') }}" class="card-img-top" alt="Course Image">
-                                            @endif
+                                            @endif--}}
                                             @if(Auth::check() && Auth::user()->hasRole('student'))
                                                 <form action="{{ route('course.bookmark') }}" method="post">
                                                     @csrf
